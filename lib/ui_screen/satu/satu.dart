@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter7/ui_screen/dua/dua.dart';
+import 'package:flutter7/ui_screen/home/home.dart';
+import 'package:states_rebuilder/scr/state_management/state_management.dart';
 
 class PageSatu extends StatelessWidget {
   const PageSatu({super.key});
@@ -14,6 +16,39 @@ class PageSatu extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            OnReactive(
+              () => Text(
+                counter.state.toString(),
+                textScaleFactor: 2,
+              ),
+            ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      counter.state = counter.state + 1;
+                      print(counter.state);
+                    },
+                    child: const Text(
+                      "tambah",
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      counter.state = counter.state - 1;
+                      print(counter.state);
+                    },
+                    child: const Text(
+                      "kurang",
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
                 final route = MaterialPageRoute(
